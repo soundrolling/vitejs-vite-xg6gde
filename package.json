@@ -1,0 +1,19 @@
+{
+  "name": "timecode-notes-app",
+  "version": "1.0.0",
+  "description": "A timecode notes field recording app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.0",
+    "cors": "^2.8.5",
+    "vite": "^4.5.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0"
+  }
+}

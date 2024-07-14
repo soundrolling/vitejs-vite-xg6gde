@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timecode Notes Field Recording App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="libs/bootstrap.min.css">
+    <link rel="stylesheet" href="libs/font-awesome.min.css">
+</head>
+<body>
+    <h2>Timecode Notes Field Recording App</h2>
+    <p><strong>Disclaimer:</strong> Data is saved locally on your device. Use the "Clear All" button to reset everything.</p>
+    <div><label for="fps">Current Time (HH:MM:SS:FF):</label> <span id="deviceTime">00:00:00:00</span></div>
+    <div><label for="fps">Set FPS:</label>
+    <select id="fps" onchange="updateDeviceTime()">
+        <option value="23.976">23.98</option>
+        <option value="24">24</option>
+        <option value="25" selected="selected">25</option>
+        <option value="30">30</option>
+    </select></div>
+    <div><input id="locationToggle" type="checkbox" onchange="toggleLocation()"> 
+    <label for="locationToggle">Enable Location Data - (This will slow performance for generating new timestamped notes)</label></div>
+    <button onclick="toggleDetails()">Show/Hide Project Details</button>
+    <div class="toggle-box" id="mixerDetails">
+        <div><label for="mixerName">Mixer Name:</label> <input placeholder="Enter Mixer's Name" id="mixerName" type="text"></div>
+        <div><label for="mixerEmail">Mixer Email:</label> <input placeholder="Enter Mixer's Email" id="mixerEmail" type="email"></div>
+        <div><label for="mixerPhone">Mixer Phone:</label> <input placeholder="Enter Mixer's Phone" id="mixerPhone" type="tel"></div>
+        <div><label for="sampleRate">Sample Rate:</label> <input placeholder="Enter Sample Rate (Hz)" id="sampleRate" type="text"></div>
+        <div><label for="bitDepth">Bit Depth:</label> <input placeholder="Enter Bit Depth (bits)" id="bitDepth" type="text"></div>
+        <div><label for="micsUsed">Mics Used:</label> <input placeholder="Enter Mics Used" id="micsUsed" type="text"></div>
+        <button onclick="saveMixerDetails()">Save Details</button> 
+        <span class="success-message" id="saveSuccess">✔ Saved!</span>
+    </div>
+    <button onclick="addTimestamp()">Add New Timestamped Note</button>
+    <div id="notesContainer"></div>
+    <div id="projectHeader">
+        <label for="projectName">Project:</label> 
+        <input value="Default" placeholder="Enter Project Name" id="projectName" type="text"> 
+        <button onclick="saveProjectName()">Save</button> 
+        <span class="success-message" id="projectSaveSuccess">✔ Saved!</span>
+    </div>
+    <table id="notesTable">
+        <tbody>
+            <tr>
+                <th>Timestamp</th>
+                <th>Notes</th>
+                <th>Location</th>
+                <th>Actions</th>
+            </tr>
+        </tbody>
+    </table>
+    <button onclick="clearAll()">Clear All</button> 
+    <button onclick="exportTableToCSV()">Export Table to CSV</button> 
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script src="libs/bootstrap.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
